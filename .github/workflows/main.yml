@@ -1,0 +1,22 @@
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Deploy on all-inkl
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout and pull data
+        uses: appleboy/ssh-action@master
+        with:
+            host: w02125d2.kasserver.com
+            username: ssh-w02125d2
+            key: ${{ secrets.SSH_KEY }}
+            script:
+              cd /www/htdocs/w02125d2/website
+              git pull
