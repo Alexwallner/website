@@ -17,6 +17,6 @@ jobs:
             host: w02125d2.kasserver.com
             username: ssh-w02125d2
             key: ${{ secrets.SSH_KEY }}
-            script:
+            script: |
               cd /www/htdocs/w02125d2/website
               git pull
