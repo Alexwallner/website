@@ -31,11 +31,11 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           script: |
             set -e
-            git -C /www/htdocs/w02125cf/.repo fetch origin retype
-            git -C /www/htdocs/w02125cf/website reset --hard origin/retype
-            git -C /www/htdocs/w02125cf/website clean -fdx
+            git -C /www/htdocs/w02125d2/.repo fetch origin retype
+            git -C /www/htdocs/w02125d2/website reset --hard origin/retype
+            git -C /www/htdocs/w02125d2/website clean -fdx
             # .htaccess (neu) schreiben
-            cat > /www/htdocs/w02125cf/website/.htaccess <<'EOF'
+            cat > /www/htdocs/w02125d2/website/.htaccess <<'EOF'
             # Schutz: keine .git* ausliefern
             <FilesMatch "^\.git">
               Require all denied
