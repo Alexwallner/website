@@ -42,7 +42,7 @@ jobs:
             </FilesMatch>
             # (optional) Keine Verzeichnislistings
             Options -Indexes
-            AuthUserFile /www/htdocs/w02125cf/website/.htpasswd
+            AuthUserFile /www/htdocs/w02125d2/website/.htpasswd
             AuthGroupFile /dev/null
             AuthName 'bitte Zugangsdaten eingeben'
             AuthType Basic
