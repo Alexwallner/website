@@ -49,6 +49,6 @@ jobs:
             require valid-user
             EOF
             # .htpasswd (neu) schreiben
-            cat > /www/htdocs/w02125cf/website/.htpasswd <<'EOF'
+            cat > /www/htdocs/w02125d2/website/.htpasswd <<'EOF'
             mmuster:hashpwd
             EOF 
