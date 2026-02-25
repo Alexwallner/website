@@ -1,4 +1,4 @@
-# Arbeitschritte 18.02.2026
+# 18.02.2026 (4 Unterrichts Einheiten)
 
 ## Laravel Projekt ausetzten
 
