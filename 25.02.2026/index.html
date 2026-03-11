@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825336314832">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.1.0.826545852506">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.0.1">
+    <meta name="generator" content="Retype 4.1.0">
 
     <!-- Primary Meta Tags -->
     <title>25.02.2026 (3 Unterrichts Einheiten)</title>
@@ -22,17 +22,17 @@
     <meta property="og:url" content="https://wallner.2526.rasser-unterricht.at/25.02.2026/">
     <meta property="og:title" content="25.02.2026 (3 Unterrichts Einheiten)">
     <meta property="og:description" content="Da die Models noch nicht befüllt waren musste ich zwei Schritte durchführen:">
-    <meta property="og:site_name" content="Alexander Wllner">
+    <meta property="og:site_name" content="Alexander Wallner">
     <meta property="og:locale" content="en_US">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=4.0.1.825336314832" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=4.1.0.826545852506" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=4.0.1.825336314832" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=4.0.1.825336314832" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=4.0.1.825336314832" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=4.1.0.826545852506" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/retype.js?v=4.1.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=4.1.0.826545852506" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=4.1.0.826545852506" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -48,7 +48,7 @@
             <div class="flex items-center justify-between h-full py-2 md:w-75">
                 <div class="flex items-center px-2 md:px-6">
                     <a id="retype-branding-logo" href="../" class="flex items-center leading-snug text-xl">
-                        <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Alexander Wllner</span>
+                        <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">Alexander Wallner</span>
                     </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">Inventar</span>
                 </div>
     
@@ -156,7 +156,7 @@
     </h3>
 </doc-anchor-target>
 <p>Da ich in der Table Devices mit Fremdschlüsseln gearbeitet habe hier zur Veranschaung:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="1-die-beziehungen-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-php"><code v-pre class="language-php">$table-&gt;foreignIdFor(\App\Models\Brand::class)-&gt;nullable()-&gt;constrained()-&gt;cascadeOnDelete();
 $table-&gt;foreignIdFor(\App\Models\Category::class)-&gt;constrained()-&gt;cascadeOnDelete();
 $table-&gt;foreignIdFor(\App\Models\Room::class)-&gt;constrained()-&gt;cascadeOnDelete();</code></pre>
@@ -164,7 +164,7 @@ $table-&gt;foreignIdFor(\App\Models\Room::class)-&gt;constrained()-&gt;cascadeOn
 <p>muss ich jetzt mit Beziehungen in meiem Model arbeiten.
 Es gibt zwei Arten: Einmal mit belongsto und das andere mal mit hasmany.</p>
 <p><strong>Belongsto</strong> wird angewendet bei dem Model wo die Fremdschlüssel hingewiesen wurden.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="1-die-beziehungen-code-2" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-php"><code v-pre class="language-php">public function brand(): BelongsTo
     {
         return $this-&gt;belongsTo(Brand::class);
@@ -172,7 +172,7 @@ Es gibt zwei Arten: Einmal mit belongsto und das andere mal mit hasmany.</p>
 </doc-codeblock></div>
 <p>Das hier ist das Beispiel für Brand, man muss das selbe für Category und Room machen.</p>
 <p><strong>Hasmany</strong> wird angewendet bei den Models die keinen Fremdschlüssel haben</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="1-die-beziehungen-code-3" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-php"><code v-pre class="language-php">public function devices(): HasMany{
         return $this-&gt;hasMany(Device::class);
     }</code></pre>
@@ -192,7 +192,7 @@ Das Bedeutet so viel wenn man nur <strong>Name</strong> in fillable geschrieben 
     </h2>
 </doc-anchor-target>
 <p>In dieser Unterrichtseinheit wurden auch die 4 Controller befüllt. Als Beispiel verwende ich den BrandController</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="controller-befüllen-per-crud-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-php"><code v-pre class="language-php"> public function index(){
 
         $brand = Brand::all();
@@ -200,7 +200,7 @@ Das Bedeutet so viel wenn man nur <strong>Name</strong> in fillable geschrieben 
     }</code></pre>
 </doc-codeblock></div>
 <p>In der function index werden hier alle Brands ausgegeben. Bei return wird noch auf die view brands.index verwiesen. Das ist eine Blade Datei die man selber erstellt hat.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="controller-befüllen-per-crud-code-2" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-php"><code v-pre class="language-php">public function create(){
 
 
@@ -208,7 +208,7 @@ Das Bedeutet so viel wenn man nur <strong>Name</strong> in fillable geschrieben 
     }</code></pre>
 </doc-codeblock></div>
 <p>Um klarheit zu schaffen, die create function ist nicht da um direkt neue Datensätze zu erstellen sonder nur da um ein Formular zur erstellung dieser Datensätze zu schaffen.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="controller-befüllen-per-crud-code-3" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-php"><code v-pre class="language-php"> </code></pre>
 </doc-codeblock></div>
 
