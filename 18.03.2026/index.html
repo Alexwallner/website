@@ -10,26 +10,26 @@
     <meta name="generator" content="Retype 4.3.0">
 
     <!-- Primary Meta Tags -->
-    <title>18.02.2026 (4 Unterrichts Einheiten)</title>
-    <meta name="title" content="18.02.2026 (4 Unterrichts Einheiten)">
-    <meta name="description" content="Heute wurde der Grundstein gelegt, ich habe mich für das Projekt Inventarapp mit dem QR-Code entschieden und nach dieser Entscheidung habe ich das Projekt">
+    <title>18.03.2026 (4 UE)</title>
+    <meta name="title" content="18.03.2026 (4 UE)">
+    <meta name="description" content="Um noch devices mehrfach zu erstellen habe ich die Store Methode (Create) abgeändert. Hier bei habe ich noch bei Attributes amount hinzugefügt. Dannach">
 
     <!-- Canonical -->
-    <link rel="canonical" href="http://wallner.2526.rasser-unterricht.at/18.02.2026/">
+    <link rel="canonical" href="http://wallner.2526.rasser-unterricht.at/18.03.2026/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://wallner.2526.rasser-unterricht.at/18.02.2026/">
-    <meta property="og:title" content="18.02.2026 (4 Unterrichts Einheiten)">
-    <meta property="og:description" content="Heute wurde der Grundstein gelegt, ich habe mich für das Projekt Inventarapp mit dem QR-Code entschieden und nach dieser Entscheidung habe ich das Projekt">
+    <meta property="og:url" content="http://wallner.2526.rasser-unterricht.at/18.03.2026/">
+    <meta property="og:title" content="18.03.2026 (4 UE)">
+    <meta property="og:description" content="Um noch devices mehrfach zu erstellen habe ich die Store Methode (Create) abgeändert. Hier bei habe ich noch bei Attributes amount hinzugefügt. Dannach">
     <meta property="og:site_name" content="Alexander Wallner">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="http://wallner.2526.rasser-unterricht.at/18.02.2026/">
-    <meta name="twitter:title" content="18.02.2026 (4 Unterrichts Einheiten)">
-    <meta name="twitter:description" content="Heute wurde der Grundstein gelegt, ich habe mich für das Projekt Inventarapp mit dem QR-Code entschieden und nach dieser Entscheidung habe ich das Projekt">
+    <meta name="twitter:url" content="http://wallner.2526.rasser-unterricht.at/18.03.2026/">
+    <meta name="twitter:title" content="18.03.2026 (4 UE)">
+    <meta name="twitter:description" content="Um noch devices mehrfach zu erstellen habe ich die Store Methode (Create) abgeändert. Hier bei habe ich noch bei Attributes amount hinzugefügt. Dannach">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
@@ -142,35 +142,161 @@
                 <!-- Rendered if sidebar right is enabled -->
                 <div id="retype-sidebar-right-toggle"></div>
                 <!-- Page content  -->
-<h1 id="18022026-4-unterrichts-einheiten">18.02.2026 (4 Unterrichts Einheiten)</h1>
-<h2 id="laravel-projekt-ausetzten">Laravel Projekt ausetzten</h2>
-<p>Heute wurde der Grundstein gelegt, ich habe mich für das Projekt Inventarapp mit dem QR-Code entschieden und nach dieser Entscheidung habe ich das Projekt mit Laravel new aufgestzt. Bei dem Aufsetzten wurde sich für Blade entschieden und PEST.</p>
-<h2 id="github">Github</h2>
-<p>Nach dem das Projekt aufgesetzt wurde, war der nächste Schritt die Einladung in den Classroom anehmen und das Projekt hochzuladen</p>
-<h2 id="laravel-funktionstüchtig-bereitstellen">Laravel funktionstüchtig bereitstellen</h2>
-<p>Die Schritte npm install, npm run build, composer install, composer require laravel/breeze, php artisan breeze:install, php artisan install:api und npm run dev. Durch diese Schritte funktioniert jetzt das log in und alle blade datein wurden erstellt.</p>
-<h2 id="planung-für-logik-des-projektes">Planung für logik des Projektes</h2>
-<p>In diesem Schritt habe ich einen logischen Aufbau für das Projekt erstellt. Welche Models, Controller und Tabellen ich brauche und in welcher Verbindung diese stehen müssen. Bei dem Controller wurde noch geplant welche Funktionen nötig sind</p>
-<h2 id="models">Models</h2>
-<p>Nach der Plannung wurden die Models <strong>Room, Brand, Device und Category</strong> erstellt. Diese wurden im jeweiligen Model noch mit einer Function mit Has Many oder Belongs to versehen.</p>
-<h2 id="tables">Tables</h2>
-<p>Zu den Models wurden nun auch die jeweiligen Tabels erstellt. Im fokus lag die Tabelle <strong>Devices</strong> da diese die Fremdschlüsseln der anderen 3 Tabellen besitzt.</p>
-<div id="tables-code-1" class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-php"><code v-pre class="language-php">  public function up(): void
+<h1 id="18032026-4-ue">18.03.2026 (4 UE)</h1>
+<h2 id="funktion-erstellt-für-erstellung-beliebiger-anzahl-an-devices">Funktion erstellt für Erstellung beliebiger Anzahl an Devices</h2>
+<div id="funktion-erstellt-für-erstellung-beliebiger-anzahl-an-devices-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-php"><code v-pre class="language-php">public function store(Request $request)
     {
-        Schema::create('devices', function (Blueprint $table) {
+
+        $attributes = $request-&gt;validate([
+            'name' =&gt; 'required|string|max:255',
+            'barcode' =&gt; 'nullable|string|unique:devices,barcode',
+            'brand_id' =&gt; 'nullable|exists:brands,id',
+            'category_id' =&gt; 'required|exists:categories,id',
+            'room_id' =&gt; 'required|exists:rooms,id',
+            'amount' =&gt; 'required|integer|min:1|max:100',
+        ]);
+
+        $amount = $attributes['amount'];
+
+
+        unset($attributes['amount']);
+
+
+        for ($i = 1; $i &lt;= $amount; $i++) {
+            $data = $attributes;
+
+            if ($amount &gt; 1 &amp;&amp; $i &gt; 1) {
+                $data['barcode'] = null;
+            }
+
+
+            if ($amount &gt; 1) {
+                $data['name'] = $attributes['name'] . &quot; ($i/$amount)&quot;;
+            }
+
+            Device::create($data);
+        }
+
+        return redirect()-&gt;route('devices.index')-&gt;with('success', &quot;$amount Geräte wurden angelegt.&quot;);
+    }
+</code></pre>
+</doc-codeblock></div>
+<p>Um noch devices mehrfach zu erstellen habe ich die Store Methode (Create) abgeändert. Hier bei habe ich noch bei <strong>Attributes amount</strong> hinzugefügt. Dannach hole ich mir mit $amount = attributes[&#x27;amount&#x27;]; die Anzahl die eingegeben wurde. Dannach muss man jedoch unset ausführen da amount nicht in meiner Database also in keiner Tabell vorhanden ist. Danach wird eine normale for schleife ausgeführt und der count geht immer um 1 hoch bis es die eingegeben Zahl erreicht hat.</p>
+<h2 id="start-des-scannes">Start des Scannes</h2>
+<p>Für den Scan musste ich vorher eine Struktur aufbauen.</p>
+<p>Ich habe mich für die zwei Models und Migrations entschieden (InventoryCheck und InventoryItem). Dazu gibt es einen Controller Inventory.</p>
+<h3 id="aufbau-dieser-migrations">Aufbau dieser migrations</h3>
+<h4 id="inventorycheck">InventoryCheck</h4>
+<div id="inventorycheck-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-php"><code v-pre class="language-php">Schema::create('inventory_checks', function (Blueprint $table) {
             $table-&gt;id();
-            $table-&gt;string('name');
-            $table-&gt;string('barcode')-&gt;nullable()-&gt;unique();
-            $table-&gt;foreignIdFor(\App\Models\Brand::class)-&gt;nullable()-&gt;constrained()-&gt;cascadeOnDelete();
-            $table-&gt;foreignIdFor(\App\Models\Category::class)-&gt;constrained()-&gt;cascadeOnDelete();
             $table-&gt;foreignIdFor(\App\Models\Room::class)-&gt;constrained()-&gt;cascadeOnDelete();
+            $table-&gt;timestamp('completed_at')-&gt;nullable(); // Wann wurde der Check be
             $table-&gt;timestamps();
-        });
+        });</code></pre>
+</doc-codeblock></div>
+<h4 id="inventoryitem">InventoryItem</h4>
+<div id="inventoryitem-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-php"><code v-pre class="language-php"> Schema::create('inventory_items', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;foreignIdFor(InventoryItem::class)-&gt;constrained()-&gt;onDelete('cascade');
+            $table-&gt;foreignIdFor(\App\Models\InventoryCheck::class)-&gt;constrained()-&gt;onDelete('cascade');
+            $table-&gt;foreignIdFor(Device::class)-&gt;constrained()-&gt;onDelete('cascade');
+            $table-&gt;boolean('is_found')-&gt;default(false);
+            $table-&gt;timestamp('scanned_at')-&gt;nullable();
+            $table-&gt;timestamps();
+        });</code></pre>
+</doc-codeblock></div>
+<h3 id="models">Models</h3>
+<p>In diesen zwei Models musste ich noch jeweils fillable machen hier habe ich einfach die ganzen felder hinzugefügt und die Beziehungen.
+Einerseit belongsto und hasmany</p>
+<div id="models-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-php"><code v-pre class="language-php">protected $fillable = [
+        'room_id',  
+        'completed_at'
+    ];
+
+  
+    public function room(): BelongsTo
+    {
+        return $this-&gt;belongsTo(Room::class);
+    }
+
+  
+   public function items(): HasMany
+   {
+     return $this-&gt;hasMany(InventoryItem::class);
+   }</code></pre>
+</doc-codeblock></div>
+<h3 id="anfang-controller-erstellung">Anfang Controller Erstellung</h3>
+<p>Die haupt function und noch einzige in diesem Controller ist die Start.</p>
+<div id="anfang-controller-erstellung-code-1" class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-php"><code v-pre class="language-php">public function start(Room $room)
+    {
+        $check = InventoryCheck::create([
+            'room_id' =&gt; $room-&gt;id,
+        ]);
+
+      
+        foreach ($room-&gt;devices as $device) {
+            InventoryItem::create([
+                'inventory_check_id' =&gt; $check-&gt;id,
+                'device_id' =&gt; $device-&gt;id,
+                'is_found' =&gt; false,
+            ]);
+        }
+
+        return redirect()-&gt;route('inventory.show', $check);
+    }
+
+   
+    public function show(InventoryCheck $check)
+    {
+        
+        $check-&gt;load('items.device', 'room');
+
+        return view('inventory.scan', compact('check'));
+    }
+
+    
+    public function scan(Request $request, InventoryCheck $check)
+    {
+        $barcode = $request-&gt;barcode;
+
+
+        $item = InventoryItem::where('inventory_check_id', $check-&gt;id)
+            -&gt;whereHas('device', function($query) use ($barcode) {
+                $query-&gt;where('barcode', $barcode);
+            })-&gt;first();
+
+        if ($item) {
+            $item-&gt;update([
+                'is_found' =&gt; true,
+                'scanned_at' =&gt; now()
+            ]);
+
+            return response()-&gt;json([
+                'success' =&gt; true,
+                'device_name' =&gt; $item-&gt;device-&gt;name
+            ]);
+        }
+
+        return response()-&gt;json([
+            'success' =&gt; false,
+            'message' =&gt; 'Gerät nicht in diesem Raum gefunden!'
+        ], 404);
+    }
+
+
+    public function complete(InventoryCheck $check)
+    {
+        $check-&gt;update(['completed_at' =&gt; now()]);
+
+        return redirect()-&gt;route('rooms.index')
+            -&gt;with('success', 'Inventur für ' . $check-&gt;room-&gt;name . ' erfolgreich abgeschlossen!');
     }</code></pre>
 </doc-codeblock></div>
-<p>Hier kann man sehen wie die Tabelle Devices aufgebaut ist.
-In den weitern Tabellen wurden nur kleine Äderungen vorgenommen wie der Name und bei <strong>Room</strong> das Stockwerk</p>
 
                 
                 <!-- Required only on API pages -->
@@ -180,20 +306,20 @@ In den weitern Tabellen wurden nur kleine Äderungen vorgenommen wie der Name un
             
                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                     <div class="w-1/2">
-                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../11.03.2026/">
+                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../18.02.2026/">
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                             <span>
                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                <span class="block mt-1">11.​03.​2026 (4 UE)</span>
+                                <span class="block mt-1">18.​02.​2026 (4 Unterrichts Einheiten)</span>
                             </span>
                         </a>
                     </div>
             
                     <div class="w-1/2">
-                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../18.03.2026/">
+                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../25.02.2026/">
                             <span>
                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                <span class="block mt-1">18.​03.​2026 (4 UE)</span>
+                                <span class="block mt-1">25.​02.​2026 (3 Unterrichts Einheiten)</span>
                             </span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                         </a>
@@ -237,6 +363,6 @@ In den weitern Tabellen wurden nur kleine Äderungen vorgenommen wie der Name un
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "18.02.2026 (4 Unterrichts Einheiten)", level: 1, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "18.03.2026 (4 UE)", level: 1, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
