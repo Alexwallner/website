@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.3.0.827150473241">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.827755533300">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.3.0">
+    <meta name="generator" content="Retype 4.4.0">
 
     <!-- Primary Meta Tags -->
     <title>04.03.2026 (4 UE)</title>
@@ -39,12 +39,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=4.3.0.827150473241" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=4.4.0.827755533300" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=4.3.0.827150473241" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../resources/js/retype.js?v=4.3.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=4.3.0.827150473241" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=4.3.0.827150473241" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=4.4.0.827755533300" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/retype.js?v=4.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=4.4.0.827755533300" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../resources/js/prism.js?v=4.4.0.827755533300" defer></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -162,20 +162,18 @@
 </doc-codeblock></div>
 <h2 id="frontend-erstellen">Frontend erstellen</h2>
 <p>Ich habe für Ordner Devices und Rooms erstellt und in diesen Datein Show,Create,Index und Edit erstellt</p>
-<p><figure class="content-center">
+<figure class="content-center">
     <img src="../ordnerstruktur.png" alt="ordner" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" width="289" height="118" />
     <figcaption class="caption">ordner</figcaption>
 </figure>
-</p>
 <h3 id="index">Index</h3>
 <p>In der Index habe ich einfach die Variablen der Models eingefügt und in der Navigation die Index hinzugefüt habe von Rooms und Devices
 In der Index wird auch auf Create, Show und Edit verweist und man kann mit einen Delete Button die Devices Löschen.
 Bei rooms habe ich noch floors ein Dropdown Menü erstellt da sich die Stockwerke nicht mehr ändern werden und diese bei 1,2,3 bleiben.</p>
-<p><figure class="content-center">
+<figure class="content-center">
     <img src="../index.png" alt="index" class="max-w-full h-auto rounded-image-rounded border-image-border border-image-border-width" width="1310" height="578" />
     <figcaption class="caption">index</figcaption>
 </figure>
-</p>
 <h2 id="fixes-am-ende-des-tages">Fixes am Ende des Tages</h2>
 <p>In den Controllern musste ich einen Teil der Variablen wieder ändern da ich ein Problem zwischen Web und den Controllern hatte.
 Ein weiteres Problem war nochmal die Struktur in den Migrations zu bearbeiten vorallem in der devices_tabel</p>
